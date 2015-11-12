@@ -1,5 +1,5 @@
 # trabajo_integrador_ruby
-TTPS opción Ruby: Facultad de Informática - UNLP 
+TTPS opción Ruby: Facultad de Informática - UNLP
 
 Trabajo integrador obligatorio
 
@@ -11,7 +11,7 @@ permita realizar algunas tareas que hoy por hoy llevan de forma manual, nada sis
 cálculo de Open Office y papel. Como te hicieron una oferta que no podés rechazar, aceptaste de muy
 buena gana realizar el desarrollo.
 Están muy apurados por cambiar su forma de trabajo, y por eso te fijaron como fecha límite para tener la
-aplicación el día Jueves 10 de Diciembre de 2015. Ese día esperan tener toda la funcionalidad
+aplicación el día Lunes 21 de Diciembre de 2015. Ese día esperan tener toda la funcionalidad
 implementada y lista para ser usada, aunque pueden aceptar que la interfaz de usuario no sea muy linda.
 A continuación tenés el resultado del análisis de requerimientos que tu Product Owner obtuvo tras algunas
 reuniones con los futuros usuarios de la aplicación, depuradas a un lenguaje relativamente técnico.
@@ -70,4 +70,3 @@ un conjunto de clientes con facturación ya cargados para poder realizar pruebas
 + Contener toda la información y documentación necesaria para ponerla en funcionamiento.
 + Cumplir, al menos, con todas las necesidades detalladas en la sección Los requerimientos.
 + Definir y pasar todos los tests de unidad pedidos.
-
