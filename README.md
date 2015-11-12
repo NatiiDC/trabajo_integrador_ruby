@@ -50,15 +50,15 @@ detallada de un cliente los siguientes ítems:
 - Persistir los datos en alguna base de datos relacional (SQLite, MySQL, choose your poison).
 - Tener tests de unidad, al menos, para las siguientes situaciones:
   - La creación de un nuevo cliente:
-  - Sin datos de contacto
-  - Con datos de contacto
-  - Con algún dato personal que no sea válido
+    - Sin datos de contacto
+    - Con datos de contacto
+    - Con algún dato personal que no sea válido
   - La carga de una nueva factura emitida por un cliente:
-  - Sin errores de validación
-  - Con errores de validación
+    - Sin errores de validación
+    - Con errores de validación
   - El borrado de un cliente:
-  - Sin facturación registrada
-  - Con alguna factura emitida
+    - Sin facturación registrada
+    - Con alguna factura emitida
 - Tener documentación de cómo preparar el ambiente para su correcto funcionamiento.
 - Tener documentación de cómo ejecutarla.
 - Tener un set de datos inicial ( seeds ) que contenga cualquier dato básico para su funcionamiento y
