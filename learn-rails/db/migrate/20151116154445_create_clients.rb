@@ -4,7 +4,7 @@ class CreateClients < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.date :born
-      t.number :document
+      t.integer :document
 
       t.timestamps null: false
     end
