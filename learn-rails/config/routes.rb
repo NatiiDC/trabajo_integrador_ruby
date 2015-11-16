@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'client/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +55,22 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  LearnRails::Application.routes.draw do
+  get 'client/index'
+      resources :clients
+  end
+
+  LearnRails::Application.routes.draw do
+    get 'client/new'
+      resources :clients
+      # root 'clients#new'
+  end
+
+  LearnRails::Application.routes.draw do
+    post 'client/create'
+      resources :clients
+  end
+
+
 end
