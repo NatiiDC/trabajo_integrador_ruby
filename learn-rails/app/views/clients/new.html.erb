@@ -1,6 +1,6 @@
 <h1> Nuevo Cliente </h1>
 
-<%= form_for :clients, url: 'create' do |f| %>
+<%= form_for :client, url: clients_path do |f| %>
   <p>
     <%= f.label :nombre %><br>
     <%= f.text_field :firstname, :required => true  %>
@@ -13,7 +13,7 @@
 
   <p>
     <%= f.label :'Fecha de nacimiento' %><br>
-    <%= f.date_field :born_on, max: Date.today, :required => true %>
+    <%= f.date_field :born_on, max: Date.today, min: Date.new(1900, 01, 01) , :required => true %>
   </p>
 
   <p>
