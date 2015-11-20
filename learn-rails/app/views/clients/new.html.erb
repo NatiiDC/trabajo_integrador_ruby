@@ -1,27 +1,50 @@
-<h1> Nuevo Cliente </h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
 
-<%= form_for :client, url: clients_path do |f| %>
-  <p>
-    <%= f.label :nombre %><br>
-    <%= f.text_field :firstname, :required => true  %>
-  </p>
+					<%= form_for :client, role:"form",  url: clients_path do |f| %>
+					  <fieldset>
+					    <h3><legend class="text-center"> Nuevo Cliente </h3></legend>
+					    <div class="form-group">
+					        <%= f.label :nombre, class: "col-md-4 control-label"  %>
+									<!-- <div class="col-md-7"> -->
+					        <%= f.text_field :firstname, :required => true, class: "form-control"  %>
+									<!-- </div> -->
+					    </div>
 
-  <p>
-    <%= f.label :apellido %><br>
-    <%= f.text_field :lastname, :required => true %>
-  </p>
+					    <div class="form-group">
+					      <%= f.label :apellido, class: "col-md-4 control-label" %>
+								<!-- <div class="col-md-7"> -->
+					      <%= f.text_field :lastname, :required => true, class: "form-control"  %>
+								<!-- </div> -->
+					    </div>
 
-  <p>
-    <%= f.label :'Fecha de nacimiento' %><br>
-    <%= f.date_field :born_on, max: Date.today, min: Date.new(1900, 01, 01) , :required => true %>
-  </p>
+					    <div class="form-group">
+					      <%= f.label :'Fecha de nacimiento', class: "col-md-4 control-label" %>
+								<!-- <div class="col-md-7"> -->
+					      <%= f.date_field :born, max: Date.today, min: Date.new(1900, 01, 01) , :required => true, class: "form-control"  %>
+								<!-- </div> -->
+					    </div>
 
-  <p>
-    <%= f.label :Documento %><br>
-    <%= f.number_field :document, min: "800000", max: "99999999", :required => true  %>
-  </p>
+					    <div class="form-group">
+					      <%= f.label :Documento, class: "col-md-4 control-label" %>
+								<!-- <div class="col-md-7"> -->
+					      	<%= f.number_field :document, min: "800000", max: "99999999", :required => true, class: "form-control", placeholder: "12345678"  %>
+					      	 <!-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button> -->
+							<!--	</div> -->
+								<p></p>
+					    </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+					    <div class="form-group pull-right">
+					        <%= link_to "Cancelar", clients_path, class:"btn btn-danger" %>
+					        <%= f.submit class:"btn btn-primary", value: "Guardar"%>
+					    </div>
+					  </fieldset>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
