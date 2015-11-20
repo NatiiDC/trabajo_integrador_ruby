@@ -1,12 +1,12 @@
 class ClientsController < ApplicationController
   def index
+    @clients = Client.all
   end
 
   def new
   end
 
   def create
-    # render plain: params[:client].inspect
     @client = Client.new(client_params)
 
     @client.save
@@ -16,16 +16,10 @@ class ClientsController < ApplicationController
 
   def show
     # begin
-    #   @client = Client.find(params[:id])
+      @client = Client.find(params[:id])
     # rescue Exception
     #   redirect_to action:'index'
     # end
-
-    @client = Client.find_by(id: params[:id] )
-
-    if ! @client
-      redirect_to action:'index'
-    end
   end
 
   private
