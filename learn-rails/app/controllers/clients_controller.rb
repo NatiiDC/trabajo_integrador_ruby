@@ -11,7 +11,6 @@ class ClientsController < ApplicationController
 
     @client.save
     redirect_to @client
-
   end
 
   def show
@@ -25,7 +24,7 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:firstname, :lastname, :born, :document)
+    params.require(:client).permit(:firstname, :lastname, :born, :type_document_cd, :number_document, :code)
   end
 
 end

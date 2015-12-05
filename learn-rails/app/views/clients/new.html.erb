@@ -24,17 +24,33 @@
 					    <div class="form-group">
 					      <%= f.label :'Fecha de nacimiento', class: "col-md-4 control-label" %>
 								<!-- <div class="col-md-7"> -->
-					      <%= f.date_field :born, max: Date.today, min: Date.new(1900, 01, 01) , :required => true, class: "form-control"  %>
+					      <%= f.date_field :born, max: Date.today, min: Date.new(1900, 01, 01), :required => true, class: "form-control"  %>
 								<!-- </div> -->
+					    </div>
+
+							<!-- ALGUNA FORMA MAS BONITA DE HACER EST0? -->
+							<div class="form-group">
+					      <%= f.label :"Tipo De Documento", class: "col-md-4 control-label" %><br><br>
+									<%= f.select(:type_document_cd) do  %>
+									  <% [['DNI', 'DNI'], ['CI', 'CI'], ['LD', 'LD']].each do |c| -%>
+									    <%= content_tag(:option, c.first, value: c.last) %>
+									  <% end %>
+									<% end %>
 					    </div>
 
 					    <div class="form-group">
 					      <%= f.label :Documento, class: "col-md-4 control-label" %>
 								<!-- <div class="col-md-7"> -->
-					      	<%= f.number_field :document, min: "800000", max: "99999999", :required => true, class: "form-control", placeholder: "12345678"  %>
+					      	<%= f.number_field :number_document, min: "800000", max: "99999999", :required => true, class: "form-control", placeholder: "12345678"  %>
 					      	 <!-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button> -->
 							<!--	</div> -->
-								<p></p>
+					    </div>
+
+							<div class="form-group">
+					      <%= f.label :'Codigo de cliente', class: "col-md-4 control-label" %>
+								<!-- <div class="col-md-7"> -->
+					      <%= f.number_field :code, min:"000001", max:"999999", :required => true, class: "form-control"  %>
+								<!-- </div> -->
 					    </div>
 
 					    <div class="form-group pull-right">

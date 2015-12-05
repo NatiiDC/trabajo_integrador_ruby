@@ -17,9 +17,11 @@ ActiveRecord::Schema.define(version: 20151116180527) do
     t.string   "firstname"
     t.string   "lastname"
     t.date     "born"
-    t.integer  "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "type_document_cd"
+    t.integer  "number_document"
+    t.integer  "code"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "invoices", force: :cascade do |t|

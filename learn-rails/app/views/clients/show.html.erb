@@ -10,4 +10,11 @@
     <strong>Apellido:</strong>
     <%= @client.lastname %>
   </h5>
+
+  <h5>
+    <strong>Tipo y n&uacute;mero de DNI:</strong>
+    <%= @client.type_document_cd %> <%= @client.number_document %>
+  </h5>
+
+  <%= link_to 'Back', clients_path, class: "btn btn-info" %>
 </div>
