@@ -1,0 +1,11 @@
+.nav-pills > li > a {
+  border-radius: 0 !important;
+}
+
+.remove-margin {
+  margin: 0 !important;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
