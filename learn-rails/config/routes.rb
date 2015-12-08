@@ -57,11 +57,13 @@ Rails.application.routes.draw do
 
   root 'clients#index'
 
-  resources :invoices
-
   resources :clients do
     member do
       get :invoices
     end
+
+    resources :invoices
   end
+  resources :people
+
 end
