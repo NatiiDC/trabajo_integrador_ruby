@@ -1,6 +1,12 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
 
 <div class="text-center" >
-  <h3> Informaci&oacute;n de cliente </h3>
+  <h3><legend class="text-center"> Informaci&oacute;n de cliente </h3></legend>
+
   <h5>
     <strong>Nombre:</strong>
     <%= @client.firstname %>
@@ -12,9 +18,28 @@
   </h5>
 
   <h5>
-    <strong>Tipo y n&uacute;mero de DNI:</strong>
-    <%= @client.type_document_cd %> <%= @client.number_document %>
+    <strong>Fecha de nacimiento</strong>
+    <%= @client.born.strftime "%d-%m-%Y" %>
   </h5>
 
-  <%= link_to 'Back', clients_path, class: "btn btn-info" %>
+  <h5>
+    <strong>Tipo y n&uacute;mero de DNI:</strong>
+    <%= @client.type_document_cd.upcase %> <%= @client.number_document %>
+  </h5>
+
+  <h5>
+    <strong>N&uacute;mero de CUIL/CUIT:</strong>
+    <%= @client.code %>
+  </h5>
+</div>
+        </div>
+      </div>
+      <div class="pull-right">
+        <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-sm btn-info"  %>
+      </div>
+      <div class="pull-left">
+        <%= link_to 'Lista de clientes', clients_path, class: "btn btn-sm btn-default" %>
+      </div>
+    </div>
+  </div>
 </div>

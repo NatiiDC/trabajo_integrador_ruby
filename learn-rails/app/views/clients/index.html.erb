@@ -9,6 +9,7 @@
       <tr>
         <th class="text-center">Nombre y apellido</th>
         <th class="text-center">Edad</th>
+				<th class="text-center">Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,10 @@
         <tr>
           <td><%= cl.firstname %> <%= cl.lastname %></td>
           <td><%= age(cl.born) %></td>
+					<td><%= link_to 'Ver', client_path(cl), class:"btn btn-sm btn-info" %>
+					<%= link_to 'Editar', edit_client_path(cl), class:"btn btn-sm btn-info" %>
+					<%= link_to 'Eliminar', client_path(cl), class:"btn btn-sm btn-danger",
+	                    method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
         </tr>
       <% end %>
     </tbody>

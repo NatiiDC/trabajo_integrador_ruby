@@ -1,0 +1,82 @@
+<%= form_for :client, role:"form", url: clients_path do |f| %>
+  <% if @client.errors.any? %>
+  <div class="container container-fluid">
+    <div id="error_explanation">
+      <h3> Encontramos <%= pluralize(@client.errors.count, "error") %> error/es en el formulario:</h3>
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+  <fieldset>
+    <h3><legend class="text-center"> Nuevo Cliente </h3></legend>
+    <div class="form-group">
+        <%= f.label :nombre, class: "col-md-4 control-label"  %>
+        <!-- <div class="col-md-7"> -->
+        <%= f.text_field :firstname, :required => true, class: "form-control", min: "2", max: "20"  %>
+        <!-- </div> -->
+    </div>
+
+    <div class="form-group">
+      <%= f.label :apellido, class: "col-md-4 control-label" %>
+      <!-- <div class="col-md-7"> -->
+      <%= f.text_field :lastname, :required => true, class: "form-control", min: "2", max: "20"  %>
+      <!-- </div> -->
+    </div>
+
+    <div class="form-group">
+      <%= f.label :'Fecha de nacimiento', class: "col-md-4 control-label" %>
+      <!-- <div class="col-md-7"> -->
+      <%= f.date_field :born, max: Date.today, min: Date.new(1900, 01, 01), :required => true, class: "form-control"  %>
+      <!-- </div> -->
+    </div>
+
+    <!-- ALGUNA FORMA MAS BONITA DE HACER EST0? -->
+    <div class="form-group">
+      <%= f.label :"Tipo De Documento", class: "col-md-4 control-label" %><br><br>
+        <%= f.select(:type_document_cd) do  %>
+          <% [['DNI', 'dni'], ['CI', 'ci'], ['LD', 'ld']].each do |c| -%>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :Documento, class: "col-md-4 control-label" %>
+      <!-- <div class="col-md-7"> -->
+        <%= f.number_field :number_document, min: "800000", max: "99999999", :required => true, class: "form-control", placeholder: "12345678"  %>
+         <!-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button> -->
+    <!--	</div> -->
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"Correo electronico", class: "col-md-4 control-label" %>
+      <%= f.email_field :email, class: "form-control", :required => true, placeholder: "ejemplo@ejemplo.com"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"Teléfono", class: "col-md-4 control-label" %>
+      <%= f.telephone_field :phone, class: "form-control", placeholder: "Ej. 221-15-3334444"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"Direción", class: "col-md-4 control-label" %>
+      <%= f.text_field :address, class: "form-control", min: "2", max: "40", placeholder: "Ej. Avenido 32 n.1280"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"CUIL/CUIT", class: "col-md-4 control-label" %>
+      <%= f.text_field :code, class: "form-control", placeholder: "Ej. 20-28564123-9"  %>
+    </div>
+
+
+
+    <div class="form-group pull-right">
+        <%= link_to "Cancelar", clients_path, class:"btn btn-danger" %>
+        <%= f.submit class:"btn btn-primary", value: "Guardar"%>
+    </div>
+  </fieldset>
+<% end %>
