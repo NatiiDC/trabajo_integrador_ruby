@@ -1,6 +1,16 @@
-<h1>Editing Invoice</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
 
-<%= render 'form' %>
+					<div class="hidden">
+						<%= @title = "Edición de factura" %>
+					</div>
+					<%= render 'form' %>
 
-<%= link_to 'Show', @invoice %> |
-<%= link_to 'Back', invoices_path %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
