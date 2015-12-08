@@ -1,29 +1,48 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
 
-<p>
-  <strong>Client:</strong>
-  <%= @invoice.client_id %>
-</p>
+					<div class="text-center" >
+					  <h3><legend class="text-center"> Informaci&oacute;n de la factura </h3></legend>
 
-<p>
-  <strong>Person:</strong>
-  <%= @invoice.person_id %>
-</p>
+						<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @invoice.description %>
-</p>
+            <h5>
+              <strong>Cliente:</strong>
+              <%= @invoice.client.firstname %> <%= @invoice.client.lastname %>
+            </h5>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @invoice.amount %>
-</p>
+            <h5>
+              <strong>Persona juridica:</strong>
+              <%= @person.name %>
+            </h5>
 
-<p>
-  <strong>Date issue:</strong>
-  <%= @invoice.date_issue %>
-</p>
+            <h5>
+              <strong>Descripción:</strong>
+              <%= @invoice.description %>
+            </h5>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+            <h5>
+              <strong>Monto:</strong>
+              <%= @invoice.amount %>
+            </h5>
+
+            <h5>
+              <strong>Fecha de emisión:</strong>
+              <%= @invoice.date_issue.strftime "%d-%m-%Y" %>
+            </h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="pull-right">
+        <a href="/clients/1/invoices/<%=@invoice.id%>/edit" class="btn btn-sm btn-info" >Editar</a>
+        # <%= link_to 'Editar', client_invoices_path(@client) %>
+        <%= link_to 'Volver', client_path %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
