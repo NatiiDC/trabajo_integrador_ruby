@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="text-center" >
+					  <h3><legend class="text-center"> Informaci&oacute;n de la persona </h3></legend>
+
+          <p id="notice"><%= notice %></p>
+
+          <h5>
+            <strong>Nombre o Razón social:</strong>
+            <%= @person.name %>
+          </h5>
+
+          <h5>
+            <strong>CUIL/CUIT:</strong>
+            <%= @person.code %>
+          </h5>
+
+        </div>
+      </div>
+    </div>
+    <div class="pull-right">
+      <%= link_to 'Editar',edit_person_path(@person), class: "btn btn-sm btn-info"  %>
+    </div>
+    <div class="pull-left">
+      <%= link_to 'Lista de personas', people_path, class: "btn btn-sm btn-default" %>
+    </div>
+    </div>
+  </div>
+</div>
