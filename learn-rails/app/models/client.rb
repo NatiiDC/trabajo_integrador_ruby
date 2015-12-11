@@ -17,21 +17,22 @@ class Client < ActiveRecord::Base
     presence: true,
     length: { in: 2..20 }
   validates :type_document_cd,
-    # inclusion: { in: %wdni, ci, ld), message: "clave: %{value} no es valido" },
-    uniqueness: { scope: :number_document }
+    inclusion: { in: %w(DNI CI LD), message: "clave: %{value} no es valido" }
   validates :number_document, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 100000,
-    less_than_or_equal_to: 99999999}
+    less_than_or_equal_to: 99999999},
+    uniqueness: {scope: :type_document_cd}
   validates :email,
     presence: true
   # validates :phone,
-  #   allow_blank: true
+    # format: {},
+    # allow_blank: true
   validates :address,
     allow_blank: true,
     length: { in: 2..40 }
   validates :code,
-    # format: { with: /\^[0-9]{2}-[0-9]{8}-[0-9]\$/ },
+    format: { with: /\A[0-9]{2}-[0-9]{8}-[0-9]\Z/ },
     presence: true,
     uniqueness: true
 
