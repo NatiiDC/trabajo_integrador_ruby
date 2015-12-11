@@ -7,7 +7,51 @@
 					<div class="hidden">
 						<%= @title = "Edición de factura" %>
 					</div>
-					<%= render 'form' %>
+
+
+					<%= form_for( @invoice ) do |f| %>
+					  <% if @invoice.errors.any? %>
+					    <div class="container container-fluid">
+					      <div id="error_explanation">
+					        <h3> Encontramos <%= pluralize(@invoice.errors.count, "error") %> error/es en el formulario:</h3>
+					        <ul>
+					        <% @invoice.errors.full_messages.each do |msg| %>
+					          <li><%= msg %></li>
+					        <% end %>
+					        </ul>
+					      </div>
+					    </div>
+					  <% end %>
+					  <fieldset>
+					  <h3><legend class="text-center"> <%= @title %> </h3></legend>
+
+					  <div class="field form-group">
+					    <%= f.label :"Personería Jurídica", class: "col-md-4 control-label" %><br>
+					    <!-- <%= f.number_field :person_id, class: "form-control", required: "true" %> -->
+					    <%= f.select(:person_id) do  %>
+					      <% @people.each do |person| -%>
+					        <%= content_tag(:option, person.name, value: person.id) %>
+					      <% end %>
+					    <% end %>
+					  </div>
+					  <div class="field form-group">
+					    <%= f.label :description, class: "col-md-4 control-label" %><br>
+					    <%= f.text_area :description, class: "form-control", required: "true" %>
+					  </div>
+					  <div class="field form-group">
+					    <%= f.label :Monto, class: "col-md-4 control-label" %><br>
+					    <%= f.number_field :amount, class: "form-control", in: 1.0..999999.0, step: 0.5, required: "true" %>
+					  </div>
+					  <div class="field form-group">
+					    <%= f.label :"Fecha de emisión", class: "col-md-4 control-label" %><br>
+					    <%= f.date_field :date_issue, class: "form-control", required: "true" %>
+					  </div>
+					  <div class="actions form-group pull-right">
+					    <%= link_to "Volver", client_invoices_path(@invoice.client) , class:"btn btn-danger" %>
+					    <%= f.submit class:"btn btn-primary", value: "Guardar"%>
+					  </div>
+					<% end %>
+
 
 				</div>
 			</div>

@@ -4,7 +4,10 @@ class InvoicesController < ApplicationController
 
   # GET /invoices
   def index
-    @invoices = Invoice.all
+
+    @client = Client.find(params[:client_id])
+    @invoices = @client.invoices
+
   end
 
   # GET /invoices/1
@@ -22,6 +25,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @people = Person.all
+    @client = Client.find(@invoice.client_id)
   end
 
   # POST /invoices
@@ -30,7 +34,7 @@ class InvoicesController < ApplicationController
     @invoice = @client.invoices.new(invoice_params)
 
       if @invoice.save
-        redirect_to @client, notice: 'La factura ha sido creada '
+        redirect_to @client, notice: 'La factura ha sido creada.'
       else
         format.html { render :new }
       end
@@ -38,29 +42,27 @@ class InvoicesController < ApplicationController
 
   # PATCH/PUT /invoices/1
   def update
-    respond_to do |format|
+    @client = Client.find(@invoice.client_id)
       if @invoice.update(invoice_params)
-        format.html { redirect_to @invoice, notice: 'La factura ha sido actualizada correctamente.' }
+        redirect_to client_invoices_path(@client) , notice: 'La factura ha sido actualizada correctamente.'
       else
         format.html { render :edit }
       end
-    end
   end
 
   # DELETE /invoices/1
   def destroy
+    @client = Client.find(@invoice.client_id)
     @invoice.destroy
-    respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'La factura ha sido borrada correctamente.' }
-    end
+    redirect_to :back, notice: 'La factura ha sido borrada correctamente.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
-      # @invoice = Invoice.find(params[:id])
-      @client = Client.find(params[:client_id])
-      @invoice = @client.invoices.find(params[:id])
+      @invoice = Invoice.find(params[:id])
+      # @client = Client.find(params[:client_id])
+      # @invoice = @client.invoices.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

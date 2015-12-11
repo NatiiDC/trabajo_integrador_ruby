@@ -7,7 +7,7 @@
 					<div class="text-center" >
 					  <h3><legend class="text-center"> Informaci&oacute;n de la factura </h3></legend>
 
-						<p id="notice"><%= notice %></p>
+						<%= render 'notice' %>
 
             <h5>
               <strong>Cliente:</strong>
@@ -38,8 +38,8 @@
         </div>
       </div>
       <div class="pull-right">
-        <a href="/clients/1/invoices/<%=@invoice.id%>/edit" class="btn btn-sm btn-info" >Editar</a>
-        # <%= link_to 'Editar', client_invoices_path(@client) %>
+        <!-- <a href="/clients/1/invoices/<%=@invoice.id%>/edit" class="btn btn-sm btn-info" >Editar</a> -->
+        <%= link_to 'Editar', edit_invoice_path(@invoice), class: "btn btn-sm btn-info" %>
         <%= link_to 'Volver', client_path %>
       </div>
       </div>

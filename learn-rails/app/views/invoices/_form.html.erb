@@ -17,7 +17,6 @@
 
   <div class="field form-group">
     <%= f.label :"Personería Jurídica", class: "col-md-4 control-label" %><br>
-    <!-- <%= f.number_field :person_id, class: "form-control", required: "true" %> -->
     <%= f.select(:person_id) do  %>
       <% @people.each do |person| -%>
         <%= content_tag(:option, person.name, value: person.id) %>
@@ -37,7 +36,7 @@
     <%= f.date_field :date_issue, class: "form-control", required: "true" %>
   </div>
   <div class="actions form-group pull-right">
-    <%= link_to "Cancelar", client_invoices_path, class:"btn btn-danger" %>
+    <%= link_to "Cancelar", client_invoices_path(@client), class:"btn btn-danger" %>
     <%= f.submit class:"btn btn-primary", value: "Guardar"%>
   </div>
 <% end %>
