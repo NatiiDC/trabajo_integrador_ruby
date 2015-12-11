@@ -1,4 +1,4 @@
-<%= form_for :client, role:"form", url: clients_path do |f| %>
+<%= form_for (@client) do |f| %>
   <% if @client.errors.any? %>
   <div class="container container-fluid">
     <div id="error_explanation">
@@ -29,14 +29,9 @@
       <%= f.date_field :born, max: Date.today, min: Date.new(1900, 01, 01), :required => true, class: "form-control"  %>
     </div>
 
-    <!-- ALGUNA FORMA MAS BONITA DE HACER EST0? -->
     <div class="form-group">
-      <%= f.label :"Tipo De Documento", class: "col-md-4 control-label" %><br><br>
-        <%= f.select(:type_document_cd) do  %>
-          <% [['DNI', 'dni'], ['CI', 'ci'], ['LD', 'ld']].each do |c| -%>
-            <%= content_tag(:option, c.first, value: c.last) %>
-          <% end %>
-        <% end %>
+      <%= f.label :"Tipo De Documento", class: "col-md-4 control-label" %>
+      <%= f.select(:type_document_cd, [['DNI', 'DNI'], ['CI', 'CI'], ['LD', 'LD']], class:"form-control" ) %>
     </div>
 
     <div class="form-group">
@@ -67,7 +62,7 @@
     </div>
 
     <div class="form-group pull-right">
-        <%= link_to "Cancelar", clients_path, class:"btn btn-danger" %>
+        <%= link_to "Cancelar", clients_path, class:"btn btn-danger", :required => true %>
         <%= f.submit class:"btn btn-primary", value: "Guardar"%>
     </div>
   </fieldset>

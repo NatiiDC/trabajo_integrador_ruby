@@ -7,7 +7,7 @@
 					<div class="text-center" >
 					  <h3><legend class="text-center"> Informaci&oacute;n de cliente </h3></legend>
 
-						<p id="notice"><%= notice %></p>
+						<%= render template: "notice" %>
 
 					  <h5>
 					    <strong>Nombre:</strong>
@@ -36,12 +36,13 @@
 					</div>
         </div>
       </div>
+      <div class="pull-left">
+				<%= link_to 'Lista de clientes', clients_path, class: "btn btn-sm btn-default" %>
+				<%= link_to 'Lista de facturas', "/clients/#{@client.id}/invoices", class: "btn btn-sm btn-default" %>
+      </div>
       <div class="pull-right">
 				<%= link_to 'Agregar factura', new_client_invoice_path(@client), class: "btn btn-sm btn-info"  %>
         <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-sm btn-info"  %>
-      </div>
-      <div class="pull-left">
-        <%= link_to 'Lista de clientes', clients_path, class: "btn btn-sm btn-default" %>
       </div>
     </div>
   </div>
