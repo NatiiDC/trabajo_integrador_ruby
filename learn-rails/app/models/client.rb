@@ -25,9 +25,9 @@ class Client < ActiveRecord::Base
     uniqueness: {scope: :type_document_cd}
   validates :email,
     presence: true
-  # validates :phone,
-    # format: {},
-    # allow_blank: true
+  validates :phone,
+  format: { with: /\A\+?[0-9]{2}[ .-]?[0-9]{3}[ .-]?[0-9]{7}[0-9]?\Z/ },
+    allow_blank: true
   validates :address,
     allow_blank: true,
     length: { in: 2..40 }
