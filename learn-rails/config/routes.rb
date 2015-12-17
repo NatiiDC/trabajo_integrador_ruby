@@ -61,7 +61,8 @@ Rails.application.routes.draw do
     # member do
     #   get :invoices
     # end
-    resources :invoices, only: [:index, :new, :create, :show]
+    get '/invoices/amount_per_year' => 'invoices#amount_per_year'
+    resources :invoices, only: [:index, :new, :create, :show, :amount_per_year]
   end
   resources :people
   resources :invoices, only: [:edit, :update, :destroy]

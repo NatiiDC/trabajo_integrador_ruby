@@ -1,9 +1,8 @@
+<%= render template: "menu" %>
 <div class="container-fluid">
   <div class="row">
-
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-9">
       <%= render template: 'notice' %>
-      <table class="table table-hover table-bordered table-condensed text-center">
         <div class="container-fluid">
           <div class="pull-left">
             <h2 class="text-center remove-margin">
@@ -11,10 +10,16 @@
             </h2>
           </div>
           <div class="pull-right">
-            <%= link_to 'Crear factura nueva', new_client_invoice_path, class:"btn btn-default" %>
+            <form class="form-inline" method="GET">
+              <div class="form-group">
+                <input type="number" class="form-control" name="year" value="" placeholder="Año">
+                <button class="btn btn-default" type="submit">Filtrar</button>
+              </div>
+            </form>
           </div>
         </div>
         <hr>
+        <table class="table table-hover table-bordered table-condensed text-center">
         <thead>
           <tr>
             <th class="text-center" >Personeria Juridica</th>
@@ -40,8 +45,12 @@
             <% end %>
           </tbody>
         </table>
+        <div class="pull-left">
+          <%= paginate @invoices %>
+        </div>
         <div class="pull-right">
-          <%= link_to 'Volver', client_path(@client), class: "btn btn-sm btn-default"  %>
+          <%= link_to 'Crear factura nueva', new_client_invoice_path, class:"btn btn-default" %>
+          <%= link_to 'Volver', client_path(@client), class: "btn btn-default" %>
         </div>
       </div>
     </div>

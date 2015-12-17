@@ -1,0 +1,24 @@
+<%= render template: "menu" %>
+<section class="col-md-8">
+  <div class="container-fluid">
+    <div class="pull-left">
+      <h2 class="text-center remove-margin">Monto anual</h2>
+    </div>
+    <div class="pull-right">
+
+      <form class="form-inline" method="GET">
+        <div class="form-group">
+          <input type="number" class="form-control" name="year" value="" placeholder="Año">
+          <button class="btn btn-default" type="submit">Filtrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr>
+    <div class="pull-left">
+      <h3> "En <%= @year %> facturó $ <%= @total_amount %>"</h3>
+    </div>
+    <div class="pull-right">
+      <%= link_to 'Volver', client_path(@client), class: "btn btn-sm btn-info" %>
+    </div>
+</section>
