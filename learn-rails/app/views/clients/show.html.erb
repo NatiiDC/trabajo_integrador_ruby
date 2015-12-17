@@ -1,6 +1,7 @@
+<%= render "menu" %>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-7 col-md-offset-0">
 			<div class="panel panel-default">
 				<div class="panel-body">
 
@@ -35,10 +36,6 @@
 					  </h5>
 					</div>
         </div>
-      </div>
-      <div class="pull-left">
-				<%= link_to 'Lista de clientes', clients_path, class: "btn btn-sm btn-default" %>
-				<%= link_to 'Lista de facturas', "/clients/#{@client.id}/invoices", class: "btn btn-sm btn-default" %>
       </div>
       <div class="pull-right">
 				<%= link_to 'Agregar factura', new_client_invoice_path(@client), class: "btn btn-sm btn-info"  %>

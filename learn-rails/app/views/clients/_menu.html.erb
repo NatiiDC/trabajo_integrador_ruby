@@ -1,0 +1,40 @@
+<aside class="sidebar col-sm-3">
+  <ul>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="panel-heading" role="tab" id="headingList">
+          <div class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseList" aria-expanded="false" aria-controls="collapseList">
+              Listados
+            </a>
+          </div>
+        </div>
+        <div id="collapseList" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingList">
+          <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+              <li><%= link_to 'Lista de clientes', clients_path %></li>
+              <li><%= link_to 'Lista de personas', people_path %>
+            </ul>
+          </div>
+        </div>
+
+      <div class="panel-heading" role="tab" id="headingOne">
+        <div class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAlumnos" aria-expanded="false" aria-controls="collapseAlumnos">
+            Datos copados
+          </a>
+        </div>
+      </div>
+      <div id="collapseAlumnos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+          <li><a href="">Listado de facturas</a></li>
+          <li><a href="">Monto total por año</a></li>
+          <li><a href="">Top 5 de personas</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div> <!-- #accordion -->
+  </ul>
+</aside>
