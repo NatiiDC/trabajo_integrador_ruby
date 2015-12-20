@@ -6,8 +6,8 @@ class CreateInvoices < ActiveRecord::Migration
       t.decimal :amount
       t.date :date_issue
 
-      t.references :person_id, index: true
-      t.references :client_id, index: true
+      t.references :person, index: true
+      t.references :client, index: true
 
       t.timestamps null: false
     end

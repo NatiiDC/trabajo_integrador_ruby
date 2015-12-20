@@ -12,7 +12,7 @@ class InvoicesController < ApplicationController
       @t2 = Time.new((@year.to_i + 1).to_s)
       @invoices = @client.invoices.where({date_issue: @t1..@t2}).page params[:page]
     else
-      @invoices = @client.invoices.order(:date_issue).page params[:page]
+      @invoices = @client.invoices.page params[:page]
     end
 
   end
