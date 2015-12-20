@@ -6,6 +6,4 @@ class Invoice < ActiveRecord::Base
   paginates_per 10
   max_paginates_per 50
 
-  default_scope { order("date_issue DESC")  }
-
 end

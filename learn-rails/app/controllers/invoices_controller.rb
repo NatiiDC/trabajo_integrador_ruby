@@ -10,9 +10,9 @@ class InvoicesController < ApplicationController
       @year = params['year']
       @t1 = Time.new(@year)
       @t2 = Time.new((@year.to_i + 1).to_s)
-      @invoices = @client.invoices.where({date_issue: @t1..@t2}).page params[:page]
+      @invoices = @client.invoices.where({date_issue: @t1..@t2}).order("date_issue DESC").page params[:page]
     else
-      @invoices = @client.invoices.page params[:page]
+      @invoices = @client.invoices.order("date_issue DESC").page params[:page]
     end
 
   end
@@ -72,7 +72,6 @@ class InvoicesController < ApplicationController
     @client = Client.find(params[:client_id])
     @invoices = @client.invoices.where({date_issue: @t1..@t2})
     @total_amount = @invoices.inject(0){ |amount, invoice| amount + invoice.amount }
-
 
   end
 

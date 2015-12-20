@@ -46,6 +46,12 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
+  def top_five_people()
+    @client = Client.find(params[:client_id])
+    @people = Client.find(params[:client_id]).invoiced_more_people()
+
+  end
+
   private
 
   def client_params

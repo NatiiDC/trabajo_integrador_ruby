@@ -4,10 +4,13 @@ class Client < ActiveRecord::Base
   as_enum :type_document, %i{dni, ci, ld }, prefix: true
 
   has_many :invoices
-
-  default_scope { order("lastname ASC", "firstname ASC")  }
+  has_many :people, through: :invoices
 
   def new
+  end
+
+  def invoiced_more_people()
+    self.people.group("name").order("amount DESC").sum("amount").first(5)
   end
 
   validates :firstname,
