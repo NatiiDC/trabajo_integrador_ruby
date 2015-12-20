@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     # member do
     #   get :invoices
     # end
+    get '/top_five_people' => 'clients#top_five_people'
     get '/invoices/amount_per_year' => 'invoices#amount_per_year'
     resources :invoices, only: [:index, :new, :create, :show, :amount_per_year]
   end

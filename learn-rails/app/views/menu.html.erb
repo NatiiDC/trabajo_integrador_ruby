@@ -28,9 +28,9 @@
       <div id="collapseAlumnos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
           <ul class="nav nav-pills nav-stacked">
-          <li><%= link_to 'Lista de facturas', "/clients/#{@client.id}/invoices" %></li>
+          <li><%= link_to 'Lista de facturas', client_invoices_path(@client) %></li>
           <li><%= link_to 'Monto total por año', client_invoices_amount_per_year_path(@client) %>
-          <li><a href="">Top 5 de personas</a></li>
+          <li><%= link_to 'Top 5 de personas', client_top_five_people_path(@client) %>
           </ul>
         </div>
       </div>

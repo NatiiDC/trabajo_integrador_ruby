@@ -4,7 +4,7 @@ end
 
 #Creación de Personas con DNI de 8 dígitos
 
-7.times do
+6.times do
   fullname = Faker::Name.name.split(' ')
   number_document = Faker::Number.number(8).to_s
   code = cuil_cuit(number_document)
@@ -51,7 +51,7 @@ end
 
 #Creación de Facturas
 
-30.times do
+40.times do
   Invoice.create(
     description: Faker::Lorem.sentence,
     amount: Faker::Number.decimal(2),
