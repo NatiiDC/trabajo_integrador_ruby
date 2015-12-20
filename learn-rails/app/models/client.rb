@@ -26,7 +26,7 @@ class Client < ActiveRecord::Base
   validates :email,
     presence: true
   validates :phone,
-  format: { with: /\A\+?[0-9]{2}[ .-]?[0-9]{3}[ .-]?[0-9]{7}[0-9]?\Z/ },
+    format: { with: /\A\+?[0-9]{2}[ .-]?[0-9]{3}[ .-]?[0-9]{7}[0-9]?\Z/ },
     allow_blank: true
   validates :address,
     allow_blank: true,

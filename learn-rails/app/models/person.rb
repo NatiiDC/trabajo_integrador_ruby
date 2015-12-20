@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
 
-  has_many :invoice
+  has_many :invoices
 
 end
