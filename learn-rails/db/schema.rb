@@ -27,22 +27,12 @@ ActiveRecord::Schema.define(version: 20151208135717) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.integer  "client_id"
-    t.string   "type_cd"
-    t.string   "contact"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "contacts", ["client_id"], name: "index_contacts_on_client_id"
-
   create_table "invoices", force: :cascade do |t|
-    t.integer  "client_id"
-    t.integer  "person_id"
     t.text     "description"
     t.decimal  "amount"
     t.date     "date_issue"
+    t.integer  "person_id"
+    t.integer  "client_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
