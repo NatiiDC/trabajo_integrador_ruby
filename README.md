@@ -16,7 +16,8 @@ reuniones con los futuros usuarios de la aplicación, depuradas a un lenguaje re
 ## Instalación
   
   Si no tiene instalado Bundler: 
-` sudo apt-get install bundler `
+
+` sudo apt-get install bundler ` o `gem install bundler`
   
 ` bundle install `
 
