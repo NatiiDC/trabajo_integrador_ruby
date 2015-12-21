@@ -1,13 +1,45 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  firstname: MyString
-  lastname: MyString
-  born: 2015-11-16
-  document: 
+client1:
+  firstname: Natalia Elizabeth
+  lastname: Aparicio
+  born: 1995-5-21
+  type_document_cd: DNI
+  number_document: 38706162
+  email: nataliaa@ejemplo.com
+  phone: +54-221-12345678
+  address: 520 nro.1234
+  code: 20-38706162-7
 
-two:
-  firstname: MyString
-  lastname: MyString
-  born: 2015-11-16
-  document: 
+client2:
+  firstname: Cirano
+  lastname: Patata
+  born: 1988-04-04
+  type_document_cd: DNI
+  number_document: 32876321
+  email: cristianb@ejemplo.com
+  phone: +54-221-12345678
+  address: 64 nro.3245
+  code: 21-32876321-8
+
+client3:
+  firstname: Iron
+  lastname: Sazasa
+  born: 1990-11-28
+  type_document_cd: CI
+  number_document: 38706162
+  email: irons@ejemplo.com
+  phone: +54-221-23456789
+  address: 13 nro.2345
+  code: 20-34426936-3
+
+clientWithOutInvoices:
+  firstname: Melisa
+  lastname: Alvarez
+  born: 1991-5-5
+  type_document_cd: LD
+  number_document: 32436544
+  email: brunoc@ejemplo.com
+  phone: +54-221-3456789
+  address: 16 nro.5678
+  code: 20-32436544-0
