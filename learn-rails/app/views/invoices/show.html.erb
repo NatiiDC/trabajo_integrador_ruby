@@ -1,48 +1,43 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="panel panel-default">
-				<div class="panel-body">
+<div class="col-md-9 col-md-offset-0">
+	<div class="panel panel-default">
+		<div class="panel-body">
 
-					<div class="text-center" >
-					  <h3><legend class="text-center"> Informaci&oacute;n de la factura </h3></legend>
+			<div class="text-center" >
+			  <h3><legend class="text-center"> Informaci&oacute;n de la factura </h3></legend>
 
-						<%= render 'notice' %>
+				<%= render template: 'notice' %>
 
-            <h5>
-              <strong>Cliente:</strong>
-              <%= @invoice.client.firstname %> <%= @invoice.client.lastname %>
-            </h5>
+        <h5>
+          <strong>Cliente:</strong>
+          <%= @invoice.client.firstname %> <%= @invoice.client.lastname %>
+        </h5>
 
-            <h5>
-              <strong>Persona juridica:</strong>
-              <%= @person.name %>
-            </h5>
+        <h5>
+          <strong>Persona juridica:</strong>
+          <%= @person.name %>
+        </h5>
 
-            <h5>
-              <strong>Descripción:</strong>
-              <%= @invoice.description %>
-            </h5>
+        <h5>
+          <strong>Descripción:</strong>
+          <%= @invoice.description %>
+        </h5>
 
-            <h5>
-              <strong>Monto:</strong>
-              <%= @invoice.amount %>
-            </h5>
+        <h5>
+          <strong>Monto:</strong>
+          $ <%= @invoice.amount %>
+        </h5>
 
-            <h5>
-              <strong>Fecha de emisión:</strong>
-              <%= @invoice.date_issue.strftime "%d-%m-%Y" %>
-            </h5>
-
-          </div>
-        </div>
-      </div>
-      <div class="pull-right">
-        <!-- <a href="/clients/1/invoices/<%=@invoice.id%>/edit" class="btn btn-sm btn-info" >Editar</a> -->
-        <%= link_to 'Editar', edit_invoice_path(@invoice), class: "btn btn-sm btn-info" %>
-        <%= link_to 'Volver', client_path %>
-      </div>
+        <h5>
+          <strong>Fecha de emisión:</strong>
+          <%= @invoice.date_issue.strftime "%d-%m-%Y" %>
+        </h5>
       </div>
     </div>
   </div>
+	<div class="pull-left">
+	  <%= link_to 'Editar', edit_invoice_path(@invoice), class: "btn btn-sm btn-info" %>
+	</div>
+	<div class="pull-right">
+	  <%= link_to 'Volver', :back, class: "btn btn-sm btn-default" %>
+	</div>
 </div>

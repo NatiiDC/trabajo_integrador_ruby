@@ -48,10 +48,14 @@ class PeopleController < ApplicationController
 
   # DELETE /people/1
   def destroy
-    @person.destroy
-    respond_to do |format|
-      format.html { redirect_to people_url, notice: 'La persona ha sido eliminada.' }
+    if @person.destroy
+      msg = "La persona ha sido eliminada."
+    else
+      msg = "No se pueden eliminar personas con facturas asociadas."
     end
+
+    redirect_to people_url, notice: msg
+
   end
 
   private

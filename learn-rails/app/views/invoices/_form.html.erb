@@ -3,7 +3,7 @@
   <% if @invoice.errors.any? %>
     <div class="container container-fluid">
       <div id="error_explanation">
-        <h3> Encontramos <%= pluralize(@invoice.errors.count, "error") %> error/es en el formulario:</h3>
+        <h3> Encontramos <%= pluralize(@invoice.errors.count, "error") %>/es en el formulario:</h3>
         <ul>
         <% @invoice.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

@@ -1,42 +1,35 @@
-<div class="container-fluid">
-	<div class="row">
-
-<div class="col-md-8 col-md-offset-2">
-	<%= render template: 'notice' %>
-  <table class="table table-hover table-bordered table-condensed text-center">
-		<div class="container-fluid">
-			<div class="pull-left">
-				<h2 class="text-center remove-margin">Listado de Clientes</h2>
-			</div>
-			<div class="pull-right">
-					<%= link_to 'Crear cliente', new_client_path, class:"btn btn-default" %>
-			</div>
+<%= render template: 'notice' %>
+<table class="table table-hover table-bordered table-condensed text-center">
+	<div class="container-fluid">
+		<div class="pull-left">
+			<h2 class="text-center remove-margin">Listado de Clientes</h2>
 		</div>
-    <hr>
-    <thead>
+		<div class="pull-right">
+				<%= link_to 'Crear cliente', new_client_path, class:"btn btn-default" %>
+		</div>
+	</div>
+  <hr>
+  <thead>
+    <tr>
+			<th class="text-center">Nombre y apellido</th>
+			<th class="text-center">Documento</th>
+			<th class="text-center">CIUL/CUIT</th>
+      <th class="text-center">Edad</th>
+			<th class="text-center">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each do |cl| %>
       <tr>
-				<th class="text-center">Nombre y apellido</th>
-				<th class="text-center">Documento</th>
-				<th class="text-center">CIUL/CUIT</th>
-        <th class="text-center">Edad</th>
-				<th class="text-center">Opciones</th>
+        <td><%= cl.firstname %> <%= cl.lastname %></td>
+				<td><%= cl.type_document_cd %> <%= cl.number_document %></td>
+				<td><%= cl.code %></td>
+        <td><%= age(cl.born) %></td>
+				<td><%= link_to 'Ver', client_path(cl), class:"btn btn-sm btn-info" %>
+				<%= link_to 'Editar', edit_client_path(cl), class:"btn btn-sm btn-info" %>
+				<%= link_to 'Eliminar', client_path(cl), class:"btn btn-sm btn-danger",
+                    method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
       </tr>
-    </thead>
-    <tbody>
-      <% @clients.each do |cl| %>
-        <tr>
-          <td><%= cl.firstname %> <%= cl.lastname %></td>
-					<td><%= cl.type_document_cd %> <%= cl.number_document %></td>
-					<td><%= cl.code %></td>
-          <td><%= age(cl.born) %></td>
-					<td><%= link_to 'Ver', client_path(cl), class:"btn btn-sm btn-info" %>
-					<%= link_to 'Editar', edit_client_path(cl), class:"btn btn-sm btn-info" %>
-					<%= link_to 'Eliminar', client_path(cl), class:"btn btn-sm btn-danger",
-	                    method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
-</div>
+    <% end %>
+  </tbody>
+</table>

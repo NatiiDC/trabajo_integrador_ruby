@@ -41,9 +41,13 @@ class ClientsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:id])
-    @client.destroy
+    if @client.destroy
+      msg = "La persona ha sido eliminada."
+    else
+      msg = "No se pueden eliminar personas con facturas asociadas."
+    end
 
-    redirect_to clients_path
+    redirect_to clients_path, notice: msg
   end
 
   def top_five_people()

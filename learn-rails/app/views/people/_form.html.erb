@@ -1,7 +1,7 @@
 <%= form_for(@person) do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
-      <h3> Encontramos <%= pluralize(@person.errors.count, "error") %> error/es en el formulario:</h3>
+      <h3> Encontramos <%= pluralize(@person.errors.count, "error") %>/es en el formulario:</h3>
 
       <ul>
       <% @person.errors.full_messages.each do |message| %>
