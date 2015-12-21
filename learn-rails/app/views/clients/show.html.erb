@@ -1,4 +1,3 @@
-<%= render template: "menu" %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-7 col-md-offset-0">
@@ -25,10 +24,27 @@
 					    <%= @client.born.strftime "%d-%m-%Y" %>
 					  </h5>
 
-					  <h5>
-					    <strong>Tipo y n&uacute;mero de DNI:</strong>
+						<h5>
+					    <strong>Tipo y n&uacute;mero de Documento:</strong>
 					    <%= @client.type_document_cd.upcase %> <%= @client.number_document %>
 					  </h5>
+
+						<h5>
+					    <strong>Correo electrónico:</strong>
+					    <%= @client.email %>
+					  </h5>
+
+						<h5>
+							<strong>Domicilio</strong>
+							<%= @client.address %>
+						</h5>
+
+						<% if ! @client.phone.nil? %>
+						<h5>
+							<strong>Teléfono</strong>
+							<%= @client.phone %>
+						</h5>
+						<% end %>
 
 					  <h5>
 					    <strong>N&uacute;mero de CUIL/CUIT:</strong>
@@ -37,9 +53,15 @@
 					</div>
         </div>
       </div>
-      <div class="pull-right">
+
+			<div class="pull-left">
 				<%= link_to 'Agregar factura', new_client_invoice_path(@client), class: "btn btn-sm btn-info"  %>
         <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-sm btn-info"  %>
+				<%= link_to 'Eliminar', client_path(@client), class:"btn btn-sm btn-danger",
+										method: :delete, data: { confirm: '¿Estás seguro?' } %>
+			</div>
+			<div class="pull-right">
+				<%= link_to 'Volver', :back, class: "btn btn-sm btn-default" %>
       </div>
     </div>
   </div>

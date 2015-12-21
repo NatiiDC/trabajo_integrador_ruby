@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>E-Vader</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<nav class="navbar navbar-default navbar-top">
-  <div class="container-fluid text-center">
-    <h3>Estudio contable E-Vader </h3>
-  </div>
-</nav>
-<%= yield %>
+  <head>
+    <title>E-Vader</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-top">
+      <div class="container-fluid text-center">
+        <h3>Estudio contable E-Vader </h3>
+      </div>
+    </nav>
+    <%= render template: "menu" %>
+    <%= yield %>
 
-  <script>
-  $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-  });
-  </script>
-</body>
+  </body>
 </html>

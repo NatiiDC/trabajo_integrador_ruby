@@ -18,6 +18,7 @@
           </div>
         </div>
 
+      <% if ! @client.nil? %>
       <div class="panel-heading" role="tab" id="headingOne">
         <div class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAlumnos" aria-expanded="false" aria-controls="collapseAlumnos">
@@ -34,7 +35,7 @@
           </ul>
         </div>
       </div>
-
-    </div> <!-- #accordion -->
+      <% end %>
+    </div> 
   </ul>
 </aside>
