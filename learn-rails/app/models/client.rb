@@ -19,6 +19,12 @@ class Client < ActiveRecord::Base
   validates :lastname,
     presence: true,
     length: { in: 2..20 }
+  #No sea menor de edad
+  validates :born,
+    presence: true,
+    date: {
+      before: Proc.new { Time.now - 18.year }, message: "Debe tener mayoría de edad (18)."
+    }
   validates :type_document_cd,
     presence: true,
     inclusion: { in: %w(DNI CI LD), message: "clave: %{value} no es valido" }
