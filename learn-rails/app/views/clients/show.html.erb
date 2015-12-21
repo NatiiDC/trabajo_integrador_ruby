@@ -1,68 +1,64 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-7 col-md-offset-0">
-			<div class="panel panel-default">
-				<div class="panel-body">
+<div class="col-md-9 col-md-offset-0">
+<div class="panel panel-default">
+	<div class="panel-body">
 
-					<div class="text-center" >
-					  <h3><legend class="text-center"> Informaci&oacute;n de cliente </h3></legend>
+		<div class="text-center" >
+		  <h3><legend class="text-center"> Informaci&oacute;n de cliente </h3></legend>
 
-						<%= render template: "notice" %>
+			<%= render template: "notice" %>
 
-					  <h5>
-					    <strong>Nombre:</strong>
-					    <%= @client.firstname %>
-					  </h5>
+		  <h5>
+		    <strong>Nombre:</strong>
+		    <%= @client.firstname %>
+		  </h5>
 
-					  <h5>
-					    <strong>Apellido:</strong>
-					    <%= @client.lastname %>
-					  </h5>
+		  <h5>
+		    <strong>Apellido:</strong>
+		    <%= @client.lastname %>
+		  </h5>
 
-					  <h5>
-					    <strong>Fecha de nacimiento</strong>
-					    <%= @client.born.strftime "%d-%m-%Y" %>
-					  </h5>
+		  <h5>
+		    <strong>Fecha de nacimiento</strong>
+		    <%= @client.born.strftime "%d-%m-%Y" %>
+		  </h5>
 
-						<h5>
-					    <strong>Tipo y n&uacute;mero de Documento:</strong>
-					    <%= @client.type_document_cd.upcase %> <%= @client.number_document %>
-					  </h5>
+			<h5>
+		    <strong>Tipo y n&uacute;mero de Documento:</strong>
+		    <%= @client.type_document_cd.upcase %> <%= @client.number_document %>
+		  </h5>
 
-						<h5>
-					    <strong>Correo electrónico:</strong>
-					    <%= @client.email %>
-					  </h5>
+			<h5>
+		    <strong>Correo electrónico:</strong>
+		    <%= @client.email %>
+		  </h5>
 
-						<h5>
-							<strong>Domicilio</strong>
-							<%= @client.address %>
-						</h5>
+			<h5>
+				<strong>Domicilio</strong>
+				<%= @client.address %>
+			</h5>
 
-						<% if ! @client.phone.nil? %>
-						<h5>
-							<strong>Teléfono</strong>
-							<%= @client.phone %>
-						</h5>
-						<% end %>
+			<% if ! @client.phone.nil? %>
+			<h5>
+				<strong>Teléfono</strong>
+				<%= @client.phone %>
+			</h5>
+			<% end %>
 
-					  <h5>
-					    <strong>N&uacute;mero de CUIL/CUIT:</strong>
-					    <%= @client.code %>
-					  </h5>
-					</div>
-        </div>
-      </div>
-
-			<div class="pull-left">
-				<%= link_to 'Agregar factura', new_client_invoice_path(@client), class: "btn btn-sm btn-info"  %>
-        <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-sm btn-info"  %>
-				<%= link_to 'Eliminar', client_path(@client), class:"btn btn-sm btn-danger",
-										method: :delete, data: { confirm: '¿Estás seguro?' } %>
-			</div>
-			<div class="pull-right">
-				<%= link_to 'Volver', :back, class: "btn btn-sm btn-default" %>
-      </div>
-    </div>
+		  <h5>
+		    <strong>N&uacute;mero de CUIL/CUIT:</strong>
+		    <%= @client.code %>
+		  </h5>
+		</div>
   </div>
+</div>
+
+<div class="pull-left">
+	<%= link_to 'Agregar factura', new_client_invoice_path(@client), class: "btn btn-sm btn-info"  %>
+  <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-sm btn-info"  %>
+	<%= link_to 'Eliminar', client_path(@client), class:"btn btn-sm btn-danger",
+							method: :delete, data: { confirm: '¿Estás seguro?' } %>
+</div>
+<div class="pull-right">
+	<%= link_to 'Volver', :back, class: "btn btn-sm btn-default" %>
+</div>
 </div>

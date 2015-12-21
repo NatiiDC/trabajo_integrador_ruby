@@ -18,7 +18,8 @@
           </div>
         </div>
 
-      <% if ! @client.nil? %>
+      <% if  ! @client.nil?  %>
+      <% if  ! @client.id.nil? %>
       <div class="panel-heading" role="tab" id="headingOne">
         <div class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAlumnos" aria-expanded="false" aria-controls="collapseAlumnos">
@@ -36,6 +37,7 @@
         </div>
       </div>
       <% end %>
-    </div> 
+      <% end %>
+    </div>
   </ul>
 </aside>

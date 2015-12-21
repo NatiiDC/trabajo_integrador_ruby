@@ -2,7 +2,7 @@
   <% if @client.errors.any? %>
   <div class="container container-fluid">
     <div id="error_explanation">
-      <h3> Encontramos <%= pluralize(@client.errors.count, "error") %> error/es en el formulario:</h3>
+      <h3> Encontramos <%= pluralize(@client.errors.count, "error") %>/es en el formulario:</h3>
       <ul>
       <% @client.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

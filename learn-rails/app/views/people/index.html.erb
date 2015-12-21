@@ -1,40 +1,33 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-7 col-md-offset-0">
-			<%= render template: 'notice' %>
-		  <table class="table table-hover table-bordered table-condensed text-center">
-        <div class="container-fluid">
-          <div class="pull-left">
-            <h2 class="text-center remove-margin">Listado de personas</h2>
-          </div>
-          <div class="pull-right">
-              <%= link_to 'Crear persona', new_person_path, class:"btn btn-default" %>
-          </div>
-        </div>
-
-        <hr>
-        <thead>
-          <tr>
-            <th class="text-center">Nombre</th>
-            <th class="text-center">CUIL/CUIT</th>
-            <th class="text-center">Opciones</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @people.each do |person| %>
-          <tr>
-            <td><%= person.name %></td>
-            <td><%= person.code %></td>
-            <td><%= link_to 'Ver', person, class:"btn btn-sm btn-info" %>
-              <%= link_to 'Editar', edit_person_path(person), class:"btn btn-sm btn-info" %>
-              <%= link_to 'Eliminar', person, class:"btn btn-sm btn-danger",
-              method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <!-- </section> -->
+<%= render template: 'notice' %>
+<table class="table table-hover table-bordered table-condensed text-center">
+  <div class="container-fluid">
+    <div class="pull-left">
+      <h2 class="text-center remove-margin">Listado de personas</h2>
     </div>
-  <!-- </div> -->
-</div>
+    <div class="pull-right">
+        <%= link_to 'Crear persona', new_person_path, class:"btn btn-default" %>
+    </div>
+  </div>
+
+  <hr>
+  <thead>
+    <tr>
+      <th class="text-center">Nombre</th>
+      <th class="text-center">CUIL/CUIT</th>
+      <th class="text-center">Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+    <tr>
+      <td><%= person.name %></td>
+      <td><%= person.code %></td>
+      <td><%= link_to 'Ver', person, class:"btn btn-sm btn-info" %>
+        <%= link_to 'Editar', edit_person_path(person), class:"btn btn-sm btn-info" %>
+        <%= link_to 'Eliminar', person, class:"btn btn-sm btn-danger",
+        method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
