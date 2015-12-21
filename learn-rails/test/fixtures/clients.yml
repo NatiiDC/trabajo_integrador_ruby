@@ -33,13 +33,12 @@ client3:
   address: 13 nro.2345
   code: 20-34426936-3
 
-clientWithOutInvoices:
+client4:
   firstname: Melisa
   lastname: Alvarez
   born: 1991-5-5
   type_document_cd: LD
   number_document: 32436544
   email: brunoc@ejemplo.com
-  phone: +54-221-3456789
   address: 16 nro.5678
   code: 20-32436544-0
