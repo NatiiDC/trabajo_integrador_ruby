@@ -37,7 +37,7 @@
             <td><%= invoice.description %></td>
             <td>$<%= invoice.amount %></td>
             <td><%= invoice.date_issue.strftime "%d-%m-%Y" %></td>
-            <td><%= link_to 'Ver', invoice, class:"btn btn-sm btn-info" %>
+            <td><%= link_to 'Ver', "invoices/#{invoice.id}", class:"btn btn-sm btn-info" %>
               <%= link_to 'Editar', edit_invoice_path(invoice), class:"btn btn-sm btn-info" %>
               <%= link_to 'Eliminar', invoice, class:"btn btn-sm btn-danger",
               method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
