@@ -3,7 +3,7 @@ class Client < ActiveRecord::Base
   # as_enum :type_document, [dni: 0, ci: 1, ld: 2, ld: 3], prefix: true
   as_enum :type_document, %i{dni, ci, ld }, prefix: true
 
-  has_many :invoices
+  has_many :invoices, dependent: :restrict_with_error
   has_many :people, through: :invoices
 
   def new
