@@ -26,6 +26,8 @@ reuniones con los futuros usuarios de la aplicación, depuradas a un lenguaje re
   
   Datos de prueba: `bundle exec rake db:setup`
   
+  Ejecutar el servidor: `bundle exec rails s`
+  
 ## Testeo
 
   ` bundle exec rake test --verbose `
