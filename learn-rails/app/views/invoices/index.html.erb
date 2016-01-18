@@ -8,13 +8,20 @@
           <div class="pull-right">
             <form class="form-inline" method="GET">
               <div class="form-group">
-                <input type="number" class="form-control" name="year" value="" placeholder="Año">
+                <input type="number" class="form-control" min="1900" name="year" value="" placeholder="Año">
                 <button class="btn btn-default" type="submit">Filtrar</button>
               </div>
             </form>
           </div>
         </div>
         <hr>
+        <div class="container-fluid">
+          <div class="pull-right"
+            <br><%= page_entries_info @invoices  %></br>
+            <br>
+          </div>
+        </div>
+
         <table class="table table-hover table-bordered table-condensed text-center">
         <thead>
           <tr>
