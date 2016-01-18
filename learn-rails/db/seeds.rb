@@ -14,9 +14,9 @@ end
     born: Faker::Date.between(90.year.ago, 18.year.ago),
     type_document_cd: 'DNI',
     number_document: number_document,
-    email: Faker::Internet.email,
-    phone: '+54 221 ' + rand(4000000...7000000).to_s,
-    address: Faker::Address.street_address,
+    # email: Faker::Internet.email,
+    # phone: '+54 221 ' + rand(4000000...7000000).to_s,
+    # address: Faker::Address.street_address,
     code: code
   )
 end
@@ -33,9 +33,9 @@ end
     born: Faker::Date.between(90.year.ago, 18.year.ago),
     type_document_cd: 'CI',
     number_document: number_document,
-    email: Faker::Internet.email,
-    phone: '+54 221 ' + rand(4000000...7000000).to_s,
-    address: Faker::Address.street_address,
+    # email: Faker::Internet.email,
+    # phone: '+54 221 ' + rand(4000000...7000000).to_s,
+    # address: Faker::Address.street_address,
     code: code
   )
 end
