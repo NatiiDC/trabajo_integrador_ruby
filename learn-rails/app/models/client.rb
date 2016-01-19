@@ -5,15 +5,17 @@ class Client < ActiveRecord::Base
 
   has_many :invoices, dependent: :restrict_with_error
   has_many :people, through: :invoices
-  has_many :contacts
+  has_many :contacts, inverse_of: :client
   accepts_nested_attributes_for :contacts, allow_destroy: true
 
-  def new
-  end
+
 
   def invoiced_more_people()
     self.people.group("name").order("amount DESC").sum("amount").first(5)
   end
+
+  validates :contacts,
+    presence: true
 
   validates :firstname,
     presence: true,
