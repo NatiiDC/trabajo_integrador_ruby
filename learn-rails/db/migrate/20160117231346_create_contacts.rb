@@ -4,8 +4,8 @@ class CreateContacts < ActiveRecord::Migration
 
       t.string :contact
 
-      t.references :person, index: true
-      t.references :type_contact, index: true
+      t.references :client, index: true
+      t.references :contact_type, index: true
 
       t.timestamps null: false
     end

@@ -63,9 +63,10 @@ Rails.application.routes.draw do
     # end
     get '/top_five_people' => 'clients#top_five_people'
     get '/invoices/amount_per_year' => 'invoices#amount_per_year'
+    get 'invoices/all' => 'invoices#all'
     resources :invoices, only: [:index, :new, :create, :show, :amount_per_year]
   end
   resources :people
   resources :invoices, only: [:edit, :update, :destroy]
-
+  resources :contacts
 end

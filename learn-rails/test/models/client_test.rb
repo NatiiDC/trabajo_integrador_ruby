@@ -58,6 +58,7 @@ class ClientTest < ActiveSupport::TestCase
 
   test "Creacion de un nuevo Cliente con datos válidos" do
 
+# rehacer
     Client.all.each do |cl|
       if (! cl.phone.nil?)
         assert cl.save, "Guardando un cliente con datos válidos con telefono"
@@ -68,6 +69,7 @@ class ClientTest < ActiveSupport::TestCase
 
   end
 
+#rehacer
   test "Borrando clientes" do
       Client.all.each do |cl|
         if (cl.invoices.count == 0)

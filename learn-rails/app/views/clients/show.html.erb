@@ -28,32 +28,11 @@
 		  </h5>
 
 			<!-- Ver si tiene contactos, de momento, queda asi -->
-			<% if @client.contacts.nil? %>
-			<h5>
-				<strong>Correo electrónico:</strong>
-				<%= @client.email %>
-			</h5>
-
-			<h5>
-				<strong>Teléfono</strong>
-				<%=  %>
-			</h5>
-
-			<h5>
-		    <strong>Teléfono móvil:</strong>
-		    <%=  %>
-		  </h5>
-
-			<h5>
-		    <strong>Skype:</strong>
-		    <%=  %>
-		  </h5>
-
-			<h5>
-				<strong>Domicilio</strong>
-				<%=  %>
-			</h5>
-
+			<% @contacts.each do |ct| %>
+				<h5>
+					<strong><%= ct.name_type.capitalize %></strong>
+					<%= ct.contact %>
+				</h5>
 			<% end %>
 
 		  <h5>

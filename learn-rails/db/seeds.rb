@@ -2,7 +2,23 @@ def cuil_cuit(dni)
   cuilt = Faker::Number.number(2).to_s + '-' + dni + '-' + Faker::Number.number(1).to_s
 end
 
-#Creación de Personas con DNI de 8 dígitos
+#Creación de Clientes con CI de 7 dígitos
+
+3.times do
+  fullname = Faker::Name.name.split(' ')
+  number_document = Faker::Number.number(8).to_s
+  code = cuil_cuit(number_document)
+  Client.create(
+    firstname: fullname.first.truncate(25),
+    lastname: fullname.last.truncate(25),
+    born: Faker::Date.between(90.year.ago, 18.year.ago),
+    type_document_cd: 'CI',
+    number_document: number_document,
+    code: code
+  )
+end
+
+#Creación de Clientes con DNI de 8 dígitos
 
 6.times do
   fullname = Faker::Name.name.split(' ')
@@ -14,31 +30,10 @@ end
     born: Faker::Date.between(90.year.ago, 18.year.ago),
     type_document_cd: 'DNI',
     number_document: number_document,
-    # email: Faker::Internet.email,
-    # phone: '+54 221 ' + rand(4000000...7000000).to_s,
-    # address: Faker::Address.street_address,
     code: code
   )
 end
 
-#Creación de Personas con CI de 7 dígitos
-
-2.times do
-  fullname = Faker::Name.name.split(' ')
-  number_document = Faker::Number.number(7).to_s
-  code = cuil_cuit(number_document)
-  Client.create(
-    firstname: fullname.first.truncate(25),
-    lastname: fullname.last.truncate(25),
-    born: Faker::Date.between(90.year.ago, 18.year.ago),
-    type_document_cd: 'CI',
-    number_document: number_document,
-    # email: Faker::Internet.email,
-    # phone: '+54 221 ' + rand(4000000...7000000).to_s,
-    # address: Faker::Address.street_address,
-    code: code
-  )
-end
 
 # Creación de Personas
 
@@ -60,3 +55,40 @@ end
     person_id: Person.order('random()').limit(1).first.id
   )
 end
+
+ContactType.create(name_cd: 'email')
+ContactType.create(name_cd: 'phone')
+ContactType.create(name_cd: 'mobile')
+ContactType.create(name_cd: 'address')
+
+1.upto(8) { |id|
+  Contact.create(
+    contact: Faker::Internet.email,
+    client_id: id,
+    contact_type_id: ContactType.where(name_cd: "email").first.id
+  )
+}
+
+1.upto(8) { |id|
+  Contact.create(
+    contact: '+54 221 ' + rand(4000000...7000000).to_s,
+    client_id: id,
+    contact_type_id: ContactType.where(name_cd: "phone").first.id
+  )
+}
+
+1.upto(8) { |id|
+  Contact.create(
+    contact: '+54 221 ' + rand(4000000...7000000).to_s,
+    client_id: id,
+    contact_type_id: ContactType.where(name_cd: "mobile").first.id
+  )
+}
+
+1.upto(8) { |id|
+  Contact.create(
+    contact: Faker::Address.street_address,
+    client_id: id,
+    contact_type_id: ContactType.where(name_cd: "address").first.id
+  )
+}

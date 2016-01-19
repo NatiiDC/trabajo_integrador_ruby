@@ -8,7 +8,7 @@
           <div class="pull-right">
             <form class="form-inline" method="GET">
               <div class="form-group">
-                <input type="number" class="form-control" min="1900" name="year" value="" placeholder="Año">
+                <input type="number" class="form-control" min="1900" name="year" value="" placeholder= <%= @year %> >
                 <button class="btn btn-default" type="submit">Filtrar</button>
               </div>
             </form>
@@ -16,9 +16,12 @@
         </div>
         <hr>
         <div class="container-fluid">
-          <div class="pull-right"
-            <br><%= page_entries_info @invoices  %></br>
-            <br>
+          <div class="pull-left">
+            <% if @count %>
+              <h4>Cantidad total de facturas: <%= @count %> - Año: <%= @year %> </h4>
+            <% else %>
+              <h4> Todas las facturas </h4>
+            <% end %>
           </div>
         </div>
 

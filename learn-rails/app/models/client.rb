@@ -6,6 +6,7 @@ class Client < ActiveRecord::Base
   has_many :invoices, dependent: :restrict_with_error
   has_many :people, through: :invoices
   has_many :contacts
+  accepts_nested_attributes_for :contacts, allow_destroy: true
 
   def new
   end
@@ -31,7 +32,7 @@ class Client < ActiveRecord::Base
     inclusion: { in: %w(DNI CI LD), message: "clave: %{value} no es valido" }
   validates :number_document, numericality: {
     only_integer: true,
-    greater_than_or_equal_to: 100000,
+    greater_than_or_equal_to: 800000,
     less_than_or_equal_to: 99999999},
     uniqueness: {scope: :type_document_cd},
     presence: true

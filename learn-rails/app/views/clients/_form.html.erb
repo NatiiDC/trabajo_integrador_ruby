@@ -1,4 +1,4 @@
-<%= form_for (@client) do |f| %>
+<%= nested_form_for (@client) do |f| %>
   <% if @client.errors.any? %>
   <div class="container container-fluid">
     <div id="error_explanation">
@@ -13,9 +13,9 @@
   <% end %>
   <fieldset>
     <h3><legend class="text-center"> <%= @title %> </h3></legend>
+
     <div class="form-group">
         <%= f.label :nombre, class: "col-md-4 control-label"  %>
-
         <%= f.text_field :firstname, :required => true, class: "form-control", min: "2", max: "20"  %>
     </div>
 
@@ -37,28 +37,46 @@
     <div class="form-group">
       <%= f.label :Documento, class: "col-md-4 control-label" %>
         <%= f.number_field :number_document, min: "800000", max: "99999999", :required => true, class: "form-control", placeholder: "12345678"  %>
-         <!-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button> -->
-    <!--	</div> -->
     </div>
 
-    <!-- <div class="form-group">
-      <%= f.label :"Correo electronico", class: "col-md-4 control-label" %>
-      <%= f.email_field :email, class: "form-control", :required => true, placeholder: "ejemplo@ejemplo.com"  %>
+    <hr>
+
+    <p><%= f.link_to_add "Agregar contacto", :contacts, :class => 'btn btn-sm btn-success', :data => { :target => "#contacts" } %></p>
+    <table class="table" id="contacts">
+      <%= f.fields_for :contacts, :wrapper => false do |ct| %>
+        <tr class="fields">
+          <td><%= ct.select(:contact_type_id, ContactType.all.collect {|c| [c.name_cd, c.id] }, class:"form-control", as: :select ) %></td>
+          <td><%= ct.text_field :contact, :required => true, class: "form-control" %></td>
+          <td><%= ct.link_to_remove "Quitar contacto" %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <hr>
+<!--
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="client_Correo electronico">Correo electronico</label>
+      <input class="form-control" required="required" placeholder="ejemplo@ejemplo.com" type="email" name="client[email]" id="client_email" />
     </div>
 
     <div class="form-group">
-      <%= f.label :"Teléfono", class: "col-md-4 control-label" %>
-      <%= f.telephone_field :phone, class: "form-control", placeholder: "Ej. +54 0221 4234567 o +54-0221-42345678"  %>
+      <label class="col-md-4 control-label" for="client_Teléfono">Teléfono</label>
+      <input class="form-control" placeholder="Ej.+54-0221-42345678" type="tel" name="client[phone]" id="client_phone" />
     </div>
 
     <div class="form-group">
-      <%= f.label :"Direción", class: "col-md-4 control-label" %>
-      <%= f.text_field :address, class: "form-control", min: "2", max: "40", placeholder: "Ej. Avenido 32 n.1280"  %>
+      <label class="col-md-4 control-label" for="client_Móvil">Teléfono Móvil</label>
+      <input class="form-control" required="required" placeholder="Ej. +54 0221 4234567" type="tel" name="client[mobile]" id="client_mobile" />
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="client_Direción">Direción</label>
+      <input class="form-control" min="2" max="40" required="required" placeholder="Ej. Avenido 32 n.1280" type="text" name="client[address]" id="client_address" />
     </div> -->
 
     <div class="form-group">
       <%= f.label :"CUIL/CUIT", class: "col-md-4 control-label" %>
-      <%= f.text_field :code, class: "form-control", placeholder: "Ej. 20-28564123-9"  %>
+      <%= f.text_field :code, class: "form-control", :required => true, placeholder: "Ej. 20-28564123-9"  %>
     </div>
 
     <div class="form-group pull-right">
