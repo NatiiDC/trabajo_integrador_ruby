@@ -12,7 +12,7 @@ end
 
 def load_contacts
 
-  1.upto(9) { |id|
+  1.upto(5) { |id|
     Contact.create(
       contact: '+54 221 ' + rand(4000000...7000000).to_s,
       client_id: id,
@@ -20,7 +20,7 @@ def load_contacts
     )
   }
 
-  1.upto(9) { |id|
+  1.upto(5) { |id|
     Contact.create(
       contact: '+54 221 ' + rand(4000000...7000000).to_s,
       client_id: id,
@@ -28,15 +28,15 @@ def load_contacts
     )
   }
 
-  1.upto(9) { |id|
+  1.upto(5) { |id|
     Contact.create(
       contact: Faker::Address.street_address,
       client_id: id,
       contact_type_id: ContactType.where(name_cd: "address").first.id
     )
   }
-  
-  1.upto(9) { |id|
+
+  1.upto(5) { |id|
     Contact.create(
     contact: Faker::Internet.email,
     client_id: id,
@@ -47,7 +47,7 @@ end
 
 # Creación de Personas
 def load_people
-  11.times do
+  12.times do
     Person.create(
     name: (Faker::Name.name).truncate(25),
     code: cuil_cuit(Faker::Number.number(8).to_s)
@@ -57,14 +57,14 @@ end
 
 # Creación de Clientes
 def load_clients
-  10.times do |i|
+  5.times do |i|
     fullname = Faker::Name.name.split(' ')
     number_document = Faker::Number.number(8).to_s
     code = cuil_cuit(number_document)
     Client.create(
       firstname: fullname.first.truncate(25),
       lastname: fullname.last.truncate(25),
-      born: Faker::Date.between(90.year.ago, 18.year.ago),
+      born: Faker::Date.between(60.year.ago, 18.year.ago),
       type_document_cd: ['DNI', 'CI', 'LD'].shuffle.first,
       number_document: number_document,
       code: code,
@@ -78,15 +78,17 @@ end
 
 # Creación de Facturas
 def load_invoices
-  60.times do
+  100.times do
     Invoice.create(
       description: Faker::Lorem.sentence,
-      amount: Faker::Number.decimal(1),
-      date_issue: Faker::Date.between(3.year.ago, Date.today),
+      amount: Faker::Number.decimal(2),
+      date_issue: Faker::Date.between(1.year.ago, Date.today),
       person_id: Person.order('random()').limit(1).first.id,
       client_id: Client.order('random()').limit(1).first.id
     )
   end
+
+
 end
 
 load_contact_types
