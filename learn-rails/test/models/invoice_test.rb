@@ -6,38 +6,57 @@ class InvoiceTest < ActiveSupport::TestCase
 #     Sin errores de validación
 #     Con errores de validación
 
-  test "Nuevas factura sin errores de validación" do
-    invoices().each do |invoice|
-      assert invoice.save
-    end
+  setup do
+    @invoice1 = invoices(:invoice1)
+    @invoice2 = invoices(:invoice2)
+    @invoice3 = invoices(:invoice3)
   end
 
-  test "Nueva factura con errores de validación" do
-
+  test "No debería guardar una factura sin descripción" do
     assert_not Invoice.new(
-    amount: "123.5", date_issue: "2014-5-21",
-    client_id: "client1", person_id: "person1").save, "Guardando una factura sin descripción"
+    amount: "123.5", date_issue: "2016-5-21",
+    client_id: clients(:client1).id,
+    person_id: people(:person1).id).save
+  end
 
+  test "No debería guardar una factura sin monto" do
     assert_not Invoice.new(
-    description: "Una descripcion cualquiera",
-    date_issue: "2014-5-21",
-    client_id: "client1", person_id: "person1").save, "Guardando una factura sin monto"
+    description: "Una descripción cualquiera",
+    date_issue: "2016-5-21",
+    client_id: clients(:client1).id,
+    person_id: people(:person1).id).save
+  end
 
+  test "No debería guardar una factura sin dia de facturación" do
     assert_not Invoice.new(
-    description: "Una descripcion cualquiera",
+    description: "Una descripción cualquiera",
     amount: "123.5",
-    client_id: "client1", person_id: "person1").save, "Guardando una factura sin el dia de facturación"
-
-    assert_not Invoice.new(
-    description: "Una descripcion cualquiera",
-    amount: "123.5", date_issue: "2014-5-21",
-    person_id: "person1").save, "Guardando una factura sin el id del cliente"
-
-    assert_not Invoice.new(
-    description: "Una descripcion cualquiera",
-    amount: "123.5", date_issue: "2014-5-21",
-    client_id: "client1").save, "Guardando una factura sin el id de la persona"
-
+    client_id: clients(:client1).id,
+    person_id: people(:person1).id).save
   end
+
+  test "No debería guardar una factura sin el cliente" do
+    assert_not Invoice.new(
+    description: "Una descripción cualquiera",
+    amount: "123.5", date_issue: "2016-5-21",
+    person_id: people(:person1).id).save
+  end
+
+  test "No debería guardar una factura sin la personas" do
+    assert_not Invoice.new(
+    description: "Una descripción cualquiera",
+    amount: "123.5", date_issue: "2016-5-21",
+    client_id: clients(:client1).id).save
+  end
+
+
+  test "Deberia crear la factura con todos los datos" do
+    assert Invoice.new(
+    description: "Una descripción cualquiera",
+    amount: "123.5", date_issue: "2016-5-21",
+    client_id: clients(:client1).id,
+    person_id: people(:person1).id).save
+  end
+
 
 end
