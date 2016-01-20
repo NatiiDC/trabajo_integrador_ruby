@@ -1,6 +1,5 @@
 **1**. 
-El modelo del cliente tiene los contactos, puede tener uno de cada uno, ya que el enunciado no es explícito en ellos. 
-El correo electrónico y la dirección son requeridos, y opté por poner que el teléfono no.
+Los clientes deberan tener al menos un medio de contacto
 
 **2**
 El número de CUIL o CUIT, es el mismo campo, y no se especifíca si es uno o el otro,
