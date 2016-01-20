@@ -8,6 +8,7 @@ class ClientsController < ApplicationController
   end
 
   def create
+
     @client = Client.new(client_params)
 
     if @client.save
@@ -18,11 +19,8 @@ class ClientsController < ApplicationController
   end
 
   def show
-    # begin
-      @client = Client.find(params[:id])
-    # rescue Exception
-    #   redirect_to action:'index'
-    # end
+    @client = Client.find(params[:id])
+    @contacts = @client.contacts
   end
 
   def edit
@@ -33,6 +31,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     if @client.update(client_params)
+
       redirect_to @client
     else
       render 'edit'
@@ -42,9 +41,9 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     if @client.destroy
-      msg = "La persona ha sido eliminada."
+      msg = "El cliente ha sido eliminada."
     else
-      msg = "No se pueden eliminar personas con facturas asociadas."
+      msg = "No se pueden eliminar clientes con facturas asociadas."
     end
 
     redirect_to clients_path, notice: msg
@@ -59,7 +58,12 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:firstname, :lastname, :born, :type_document_cd, :number_document, :email, :phone, :address, :code)
+    params
+      .require(:client)
+      .permit(
+        :firstname, :lastname, :born,
+        :type_document_cd, :number_document, :code,
+        contacts_attributes: [:id, :contact, :contact_type_id, :_destroy])
   end
 
 end

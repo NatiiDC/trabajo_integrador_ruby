@@ -6,15 +6,21 @@ class InvoicesController < ApplicationController
   def index
 
     @client = Client.find(params[:client_id])
-    if (params['year'])
-      @year = params['year']
+
+    if params['year'] == ""
+      @invoices = @client.invoices.order("date_issue DESC").page params[:page]
+      params['year'] = "all"
+    else
+      @year = params['year'] || 2015
       @t1 = Time.new(@year)
       @t2 = Time.new((@year.to_i + 1).to_s)
       @invoices = @client.invoices.where({date_issue: @t1..@t2}).order("date_issue DESC").page params[:page]
-    else
-      @invoices = @client.invoices.order("date_issue DESC").page params[:page]
+      @count = @client.invoices.where({date_issue: @t1..@t2}).count
     end
+  end
 
+  def all
+    @client = Client.find(params[:client_id])
   end
 
   # GET /invoices/1

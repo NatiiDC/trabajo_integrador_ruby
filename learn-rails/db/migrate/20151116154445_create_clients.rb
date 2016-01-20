@@ -6,9 +6,6 @@ class CreateClients < ActiveRecord::Migration
       t.date :born
       t.string :type_document_cd
       t.integer :number_document
-      t.string :email
-      t.string :phone
-      t.string :address
       t.string :code
 
 

@@ -4,19 +4,19 @@ invoice1:
   description: es una descripcion
   amount: 123.5
   date_issue: 2014-5-21
-  client_id: client1
-  person_id: person1
+  client: client1
+  person: person1
 
 invoice2:
   description: sarasa
   amount: 187.0
   date_issue: 2014-1-16
-  client_id: client2
-  person_id: person2
+  client: client2
+  person: person2
 
 invoice3:
   description: primer cuota
   amount: 300.0
   date_issue: 2015-3-13
-  client_id: client3
-  person_id: person2
+  client: client2
+  person: person2
