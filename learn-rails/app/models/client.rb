@@ -14,8 +14,8 @@ class Client < ActiveRecord::Base
     self.people.group("name").order("amount DESC").sum("amount").first(5)
   end
 
-  # validates :contacts,
-  #   presence: true
+  validates :contacts,
+    presence: true
 
   validates :firstname,
     presence: true,
