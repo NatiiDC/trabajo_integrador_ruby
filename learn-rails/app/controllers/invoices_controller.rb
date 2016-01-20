@@ -11,7 +11,7 @@ class InvoicesController < ApplicationController
       @invoices = @client.invoices.order("date_issue DESC").page params[:page]
       params['year'] = "all"
     else
-      @year = params['year'] || 2015
+      @year = params['year'] || Time.new.year
       @t1 = Time.new(@year)
       @t2 = Time.new((@year.to_i + 1).to_s)
       @invoices = @client.invoices.where({date_issue: @t1..@t2}).order("date_issue DESC").page params[:page]
