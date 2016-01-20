@@ -8,18 +8,10 @@ class ClientsController < ApplicationController
   end
 
   def create
-    # @client = Client.new(firstname: client_params["firstname"],lastname: client_params["lastname"], born: client_params["born"],
-    #             type_document_cd: client_params["type_document_cd"],number_document: client_params["number_document"], code: client_params["code"])
 
     @client = Client.new(client_params)
 
     if @client.save
-
-      # Contact.new(contact: client_params["email"], client_id: @client.id, contact_type_id: ContactType.where(name_cd: "email").first )
-      # Contact.new(contact: client_params["phone"], client_id: @client.id, contact_type_id: ContactType.where(name_cd: "phone").first )
-      # Contact.new(contact: client_params["mobile"], client_id: @client.id, contact_type_id: ContactType.where(name_cd: "mobile").first )
-      # Contact.new(contact: client_params["address"], client_id: @client.id, contact_type_id: ContactType.where(name_cd: "address").first )
-
       redirect_to @client
     else
       render 'new'
@@ -27,12 +19,8 @@ class ClientsController < ApplicationController
   end
 
   def show
-    # begin
-      @client = Client.find(params[:id])
-      @contacts = @client.contacts
-    # rescue Exception
-    #   redirect_to action:'index'
-    # end
+    @client = Client.find(params[:id])
+    @contacts = @client.contacts
   end
 
   def edit
@@ -53,9 +41,9 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     if @client.destroy
-      msg = "La persona ha sido eliminada."
+      msg = "El cliente ha sido eliminada."
     else
-      msg = "No se pueden eliminar personas con facturas asociadas."
+      msg = "No se pueden eliminar clientes con facturas asociadas."
     end
 
     redirect_to clients_path, notice: msg

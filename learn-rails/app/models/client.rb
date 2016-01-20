@@ -14,8 +14,8 @@ class Client < ActiveRecord::Base
     self.people.group("name").order("amount DESC").sum("amount").first(5)
   end
 
-  validates :contacts,
-    presence: true
+  # validates :contacts,
+  #   presence: true
 
   validates :firstname,
     presence: true,
@@ -38,14 +38,9 @@ class Client < ActiveRecord::Base
     less_than_or_equal_to: 99999999},
     uniqueness: {scope: :type_document_cd},
     presence: true
-  # validates :email,
-  #   presence: true
   # validates :phone,
   #   presence: false,
   #   format: { with: /\A(\+?[0-9]{2}[ .-]?[0-9]{3,4}[ .-]?[0-9]{7}[0-9]?){0,1}\Z/ }
-  # validates :address,
-  #   length: { in: 2..40 },
-  #   presence: true
   validates :code,
     format: { with: /\A[0-9]{2}-[0-9]{8}-[0-9]\Z/ },
     presence: true,
