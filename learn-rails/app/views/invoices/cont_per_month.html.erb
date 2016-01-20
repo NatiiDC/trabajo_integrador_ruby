@@ -1,0 +1,37 @@
+
+<div class="container-fluid">
+  <div class="pull-left">
+    <h2 class="text-center remove-margin"> Facturas mensuales</h2>
+  </div>
+  <div class="pull-right">
+    <form class="form-inline" method="GET">
+      <div class="form-group">
+        <input type="number" class="form-control" name="year" value="" placeholder= <%= @year %>>
+        <button class="btn btn-default" type="submit">Filtrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+
+<div class="col-md-8 col-md-offset-0">
+  <table class="table table-hover table-bordered table-condensed text-center">
+    <thead>
+      <tr>
+        <th class="text-center"> Mes </th>
+        <th class="text-center"> Cantidad </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% 1.upto(12) { |index| %>
+        <tr>
+          <td> <%= @meses[index] %> </td>
+          <td> <%= @cont[index] %> </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <div class="pull-right">
+    <%= link_to 'Volver', client_path(@client), class: "btn btn-sm btn-info" %>
+  </div>
+</div>

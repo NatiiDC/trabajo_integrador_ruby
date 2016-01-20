@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
 
+  root 'clients#index'
+
+  resources :clients do
+    # member do
+    #   get :invoices
+    # end
+    get '/top_five_people' => 'clients#top_five_people'
+    get '/invoices/amount_per_year' => 'invoices#amount_per_year'
+    get '/invoices/cont_per_month' => 'invoices#cont_per_month'
+    get 'invoices/all' => 'invoices#all'
+    resources :invoices, only: [:index, :new, :create, :show, :amount_per_year]
+  end
+  resources :people
+  resources :invoices, only: [:edit, :update, :destroy]
+  resources :contacts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -55,18 +70,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root 'clients#index'
-
-  resources :clients do
-    # member do
-    #   get :invoices
-    # end
-    get '/top_five_people' => 'clients#top_five_people'
-    get '/invoices/amount_per_year' => 'invoices#amount_per_year'
-    get 'invoices/all' => 'invoices#all'
-    resources :invoices, only: [:index, :new, :create, :show, :amount_per_year]
-  end
-  resources :people
-  resources :invoices, only: [:edit, :update, :destroy]
-  resources :contacts
 end

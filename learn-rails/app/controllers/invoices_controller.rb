@@ -70,27 +70,45 @@ class InvoicesController < ApplicationController
     redirect_to :back, notice: 'La factura ha sido borrada correctamente.'
   end
 
-  def amount_per_year()
-
-    @year = params['year'] || 2015
+  def amount_per_year
+    @year = params['year'] || Time.new.year
     @t1 = Time.new(@year)
     @t2 = Time.new((@year.to_i + 1).to_s)
     @client = Client.find(params[:client_id])
     @invoices = @client.invoices.where({date_issue: @t1..@t2})
     @total_amount = @invoices.inject(0){ |amount, invoice| amount + invoice.amount }
+  end
+
+  def cont_per_month
+    @year = params['year'] || Time.new.year
+    @t1 = Time.new(@year)
+    @t2 = Time.new((@year.to_i + 1).to_s)
+    @client = Client.find(params[:client_id])
+    @invoices = @client.invoices.where({date_issue: @t1..@t2})
+
+    @meses = ['nada', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+              'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+              'Noviembre', 'Diciembre']
+    @cont = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    @invoices.each { |iv|
+      @cont[iv.date_issue.month] += 1
+      # @cont[iv.date_issue.month] += iv.amount.to_f
+      # @cont[iv.date_issue.month] = @cont[iv.date_issue.month].round(2)
+    }
 
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_invoice
-      @invoice = Invoice.find(params[:id])
-      # @client = Client.find(params[:client_id])
-      # @invoice = @client.invoices.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def invoice_params
-      params.require(:invoice).permit(:client_id, :person_id, :description, :amount, :date_issue)
-    end
+  def set_invoice
+    @invoice = Invoice.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def invoice_params
+    params.require(:invoice).permit(:client_id, :person_id, :description, :amount, :date_issue)
+  end
 end
