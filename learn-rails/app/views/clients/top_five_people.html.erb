@@ -6,7 +6,7 @@
 <hr>
 <div class="pull-left">
   <% @people.each do |p| %>
-  <h3> <%= p[0] %> $<%= p[1] %></h3>
+  <h3> <%= p[0] %> $<%= p[1].round(2) %></h3>
   <% end %>
 </div>
 <div class="pull-right">
