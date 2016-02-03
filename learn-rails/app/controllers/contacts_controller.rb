@@ -21,21 +21,19 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-      if @contact.save
-        format.html { redirect_to @contact, notice: 'Contacto creado correctamente.' }
-      else
-        format.html { render :new }
-      end
+    if @contact.save
+      format.html { redirect_to @contact, notice: 'Contacto creado correctamente.' }
+    else
+      format.html { render :new }
     end
   end
 
   # PATCH/PUT /contacts/1
   def update
-      if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contacto actualizado' }
-      else
-        format.html { render :edit }
-      end
+    if @contact.update(contact_params)
+      format.html { redirect_to @contact, notice: 'Contacto actualizado' }
+    else
+      format.html { render :edit }
     end
   end
 

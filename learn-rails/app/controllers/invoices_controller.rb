@@ -7,7 +7,7 @@ class InvoicesController < ApplicationController
 
     @client = Client.find(params[:client_id])
 
-    if params['year'] == ""
+    if ( params['year'] == "" || params['year'] == "all" )
       @invoices = @client.invoices.order("date_issue DESC").page params[:page]
       params['year'] = "all"
     else
