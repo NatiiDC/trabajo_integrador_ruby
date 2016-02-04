@@ -46,7 +46,7 @@
       <%= f.fields_for :contacts, :wrapper => false do |ct| %>
         <tr class="fields">
           <td><%= ct.select(:contact_type_id, ContactType.all.collect {|c| [c.name_cd, c.id] }, class:"form-control", as: :select ) %></td>
-          <td><%= ct.text_field :contact, :required => true, class: "form-control" %></td>
+          <td><%= ct.text_field :contact, class: "form-control" %></td>
           <td><%= ct.link_to_remove "Quitar contacto" %></td>
         </tr>
       <% end %>

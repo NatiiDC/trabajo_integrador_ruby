@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('ready', function() {
+  $('input[type=hidden][name$="_destroy]"][value=true]').parents('tr').hide();
+})

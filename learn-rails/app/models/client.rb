@@ -11,7 +11,7 @@ class Client < ActiveRecord::Base
 
 
   def invoiced_more_people()
-    self.people.group("name").order("amount DESC").sum("amount").first(5)
+    self.people.group("name").order("sum_amount DESC").sum("amount").first(5)
   end
 
   validates :contacts,
