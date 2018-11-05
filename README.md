@@ -1,7 +1,7 @@
-#TTPS opción Ruby: Facultad de Informática - UNLP
+# TTPS opción Ruby: Facultad de Informática - UNLP
 
 
-##Contexto
+## Contexto
 
 El estudio contable **E-Vader** te ha contactado para pedirte que desarrolles una aplicación web que les
 permita realizar algunas tareas que hoy por hoy llevan de forma manual, nada sistemática, en hojas de
